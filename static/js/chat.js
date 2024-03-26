@@ -26,14 +26,11 @@ ws.onmessage = function (evt) {
   if (msg.type === "note") {
     item = $(`<li><i>${msg.text}</i></li>`);
   } else if (msg.type === "chat") {
-    if (msg.text === "joke") {
-      // If the message is a joke, display it as a regular chat message from the server
-      item = $(`<li><b>Server: </b>${msg.text}</li>`);
-    } else {
-      // Otherwise, display regular chat messages from users
-      item = $(`<li><b>${msg.name}: </b>${msg.text}</li>`);
-    }
+    item = $(`<li><b>${msg.name}: </b>${msg.text}</li>`);
+  } else if (msg.type === "get-joke") {
+    item = $(`<li><b>Server: </b>${msg.text}</li>`);
   } else {
+    // Otherwise, display regular chat messages from users else {
     return console.error(`bad message: ${msg}`);
   }
 

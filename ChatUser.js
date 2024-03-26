@@ -75,11 +75,10 @@ class ChatUser {
       '"Dad, do you think it\'s going to snow this winter?" "I dont know, its all up in the air"',
     ];
     const randomIndex = Math.floor(Math.random() * jokes.length);
-    const joke = jokes[randomIndex];
-    console.log(joke);
+    let joke = jokes[randomIndex];
 
-    this.send({
-      type: "chat",
+    this.room.broadcast({
+      type: "get-joke",
       text: joke,
       name: "Server",
     });
